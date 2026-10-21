@@ -1,0 +1,26 @@
+# DotEnv configuration
+.env
+.env.*
+
+# Node.js
+node_modules/
+
+# Claude Code: persoonlijke instellingen
+.claude/settings.local.json
+
+# Logs
+*.log
+
+# Pycharm
+.idea
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Mac OS-specific storage files
+.DS_Store
+
+# vim
+*.swp
+*.swo
