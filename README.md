@@ -10,11 +10,18 @@ https://timhartman58.github.io/vermogenscalculator/
 
 ## Tests draaien
 
-De tests worden nog toegevoegd. Je hebt [Node.js](https://nodejs.org/) nodig. Draai in de projectmap:
+Je hebt [Node.js](https://nodejs.org/) nodig. Draai in de projectmap:
 
 ```
 node --test
 ```
+
+## Keuzemogelijkheden
+
+- **Moment van inleg**: eind van de maand (standaard) of begin van de maand. Bij begin van de maand krijgt elke inleg een maand langer rente.
+- **Rentemethode**: effectief (standaard) of jaarrente/12. Effectief geeft na een jaar precies de opgegeven jaarrente; bij jaarrente/12 kom je door rente-op-rente iets hoger uit (3% wordt ongeveer 3,04%).
+
+De rente vul je in als percentage. Er wordt tussendoor niet afgerond, alleen de uitkomst op centen.
 
 ## Wat niet wordt meegerekend
 
