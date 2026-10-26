@@ -3,8 +3,8 @@
 // instelling voor kan komen (issue #8).
 
 const TAAL = 'nl-NL';
-const DUIZENDTALTEKEN = '.';
-const DECIMAALTEKEN = ',';
+export const DUIZENDTALTEKEN = '.';
+export const DECIMAALTEKEN = ',';
 
 const euroFormaat = new Intl.NumberFormat(TAAL, { style: 'currency', currency: 'EUR' });
 

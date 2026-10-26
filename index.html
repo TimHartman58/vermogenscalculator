@@ -11,20 +11,35 @@
   <form id="formulier">
     <p>
       <label for="startbedrag">Startbedrag (€)</label>
-      <input type="text" inputmode="decimal" id="startbedrag" name="startbedrag" aria-describedby="hint">
+      <input type="text" inputmode="decimal" id="startbedrag" name="startbedrag" aria-describedby="hint melding-startbedrag">
+      <span id="melding-startbedrag"></span>
     </p>
     <p>
       <label for="maandInleg">Maandelijkse inleg (€)</label>
-      <input type="text" inputmode="decimal" id="maandInleg" name="maandInleg" aria-describedby="hint">
+      <input type="text" inputmode="decimal" id="maandInleg" name="maandInleg" aria-describedby="hint melding-maandInleg">
+      <span id="melding-maandInleg"></span>
     </p>
     <p>
       <label for="jaarrente">Jaarrente (%)</label>
-      <input type="text" inputmode="decimal" id="jaarrente" name="jaarrente" aria-describedby="hint">
+      <input type="text" inputmode="decimal" id="jaarrente" name="jaarrente" aria-describedby="hint melding-jaarrente">
+      <span id="melding-jaarrente"></span>
     </p>
-    <p>
-      <label for="looptijd">Looptijd (jaren)</label>
-      <input type="text" inputmode="decimal" id="looptijd" name="looptijd" aria-describedby="hint">
-    </p>
+
+    <fieldset>
+      <legend>Looptijd</legend>
+      <p>
+        <label for="looptijdJaren">Jaren</label>
+        <input type="text" inputmode="numeric" id="looptijdJaren" name="looptijdJaren" aria-describedby="melding-looptijdJaren melding-looptijd">
+        <span id="melding-looptijdJaren"></span>
+      </p>
+      <p>
+        <label for="looptijdMaanden">Maanden</label>
+        <input type="text" inputmode="numeric" id="looptijdMaanden" name="looptijdMaanden" aria-describedby="melding-looptijdMaanden melding-looptijd">
+        <span id="melding-looptijdMaanden"></span>
+      </p>
+      <p id="melding-looptijd"></p>
+    </fieldset>
+
     <p id="hint">Gebruik een komma voor decimalen. Bijvoorbeeld: 3,5 of 10.000.</p>
 
     <fieldset>
@@ -58,6 +73,7 @@
 
   <section aria-live="polite">
     <h2>Uitkomst</h2>
+    <p id="melding-uitkomst"></p>
     <dl>
       <dt>Eindbedrag</dt>
       <dd id="eindbedrag"></dd>
