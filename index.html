@@ -7,5 +7,69 @@
 </head>
 <body>
   <h1>Vermogenscalculator</h1>
+
+  <form id="formulier">
+    <p>
+      <label for="startbedrag">Startbedrag (€)</label>
+      <input type="text" inputmode="decimal" id="startbedrag" name="startbedrag" aria-describedby="hint">
+    </p>
+    <p>
+      <label for="maandInleg">Maandelijkse inleg (€)</label>
+      <input type="text" inputmode="decimal" id="maandInleg" name="maandInleg" aria-describedby="hint">
+    </p>
+    <p>
+      <label for="jaarrente">Jaarrente (%)</label>
+      <input type="text" inputmode="decimal" id="jaarrente" name="jaarrente" aria-describedby="hint">
+    </p>
+    <p>
+      <label for="looptijd">Looptijd (jaren)</label>
+      <input type="text" inputmode="decimal" id="looptijd" name="looptijd" aria-describedby="hint">
+    </p>
+    <p id="hint">Gebruik een komma voor decimalen. Bijvoorbeeld: 3,5 of 10.000.</p>
+
+    <fieldset>
+      <legend>Moment van inleg</legend>
+      <p>
+        <input type="radio" id="inleg-eind" name="inlegMoment" value="eind" checked>
+        <label for="inleg-eind">Eind van de maand</label>
+      </p>
+      <p>
+        <input type="radio" id="inleg-begin" name="inlegMoment" value="begin">
+        <label for="inleg-begin">Begin van de maand</label>
+      </p>
+      <p>Bij begin van de maand krijgt elke inleg een maand langer rente.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Rentemethode</legend>
+      <p>
+        <input type="radio" id="rente-effectief" name="renteMethode" value="effectief" checked>
+        <label for="rente-effectief">Effectief</label>
+      </p>
+      <p>
+        <input type="radio" id="rente-nominaal" name="renteMethode" value="nominaal">
+        <label for="rente-nominaal">Jaarrente/12</label>
+      </p>
+      <p>Effectief geeft na een jaar precies de opgegeven jaarrente. Bij jaarrente/12 kom je door rente-op-rente iets hoger uit.</p>
+    </fieldset>
+
+    <button type="submit">Bereken</button>
+  </form>
+
+  <section aria-live="polite">
+    <h2>Uitkomst</h2>
+    <dl>
+      <dt>Eindbedrag</dt>
+      <dd id="eindbedrag"></dd>
+      <dt>Totaal ingelegd</dt>
+      <dd id="totaalIngelegd"></dd>
+      <dt>Totale rente</dt>
+      <dd id="totaleRente"></dd>
+    </dl>
+  </section>
+
+  <p>Belasting (box 3), inflatie en kosten worden niet meegerekend. De uitkomst is een indicatie en geen financieel advies.</p>
+
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
