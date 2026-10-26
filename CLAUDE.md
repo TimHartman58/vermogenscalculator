@@ -3,7 +3,12 @@
 ## Projectbesluiten
 - HTML, CSS en JavaScript zonder framework.
 - Rekenlogica in `berekening.js`, getest met `node --test` (`berekening.test.js`).
-- `berekening.js` is een ES-module (`export`/`import`). `package.json` bevat alleen `"type": "module"`. In de browser laden met `<script type="module">`; lokaal openen kan dan alleen via een lokale server (bijv. Live Server), niet door te dubbelklikken.
+- `berekening.js` is een ES-module (`export`/`import`). `package.json` bevat alleen `"type": "module"`. In de browser laden met `<script type="module">`; lokaal openen kan dan alleen via een lokale server (`python -m http.server 8000`, dan http://localhost:8000), niet door te dubbelklikken.
+- Taakverdeling: `berekening.js` rekent, `opmaak.js` maakt bedragen op en leest invoer (getest met `opmaak.test.js`), `app.js` koppelt alleen de pagina en wordt niet getest met `node --test`.
+- De pagina rekent pas bij de knop "Bereken" (of Enter), niet bij elke wijziging.
+- Invoervelden zijn tekstvelden (`type="text"`, `inputmode="decimal"`) in Nederlandse notatie: punt = duizendtal, komma = decimaal. `leesGetal` zet om; leeg of onzin geeft `NaN`. Let op: "3.5" wordt dus 35.
+- Bedragen tonen via `Intl.NumberFormat('nl-NL')` in `formatteerEuro`. Tussen € en het bedrag staat een harde spatie (U+00A0); in tests `'€ 1.216,41'`.
+- De notatie staat in constanten bovenaan `opmaak.js`. Een instelling voor de notatie volgt in issue #8.
 - Invoer: startbedrag, maandelijkse inleg, jaarrente, looptijd in jaren.
 - Uitvoer: eindbedrag, totaal ingelegd, totale rente.
 - Rente-invoer als percentage (3), intern als fractie (0,03).
