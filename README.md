@@ -1,6 +1,6 @@
 # Vermogenscalculator
 
-Een rekenhulp die laat zien hoeveel vermogen je opbouwt met een startbedrag, een maandelijkse inleg, een jaarrente en een looptijd in jaren. Je ziet het eindbedrag, het totaal dat je hebt ingelegd en de totale rente.
+Een rekenhulp die laat zien hoeveel vermogen je opbouwt met een startbedrag, een maandelijkse inleg, een jaarrente en een looptijd in jaren en maanden. Je ziet het eindbedrag, het totaal dat je hebt ingelegd en de totale rente.
 
 Gemaakt in HTML, CSS en JavaScript, zonder framework (oefenproject).
 
@@ -33,7 +33,15 @@ node --test
 
 De rente vul je in als percentage. Er wordt tussendoor niet afgerond, alleen de uitkomst op centen.
 
-Getallen vul je in met Nederlandse notatie: een komma voor decimalen en een punt als duizendtalteken, bijvoorbeeld 3,5 of 10.000. Let op: 3.5 wordt gelezen als 35.
+Getallen vul je in met Nederlandse notatie: een komma voor decimalen en een punt als duizendtalteken, bijvoorbeeld 3,5 of 10.000. Typ je 3.5, dan vraagt de pagina of je 3,5 bedoelt.
+
+## Invoerregels
+
+- **Startbedrag en maandelijkse inleg**: leeg telt als 0; tussen € 0 en € 1.000.000.000; maximaal twee cijfers achter de komma.
+- **Jaarrente**: verplicht; hoger dan -100% en hoogstens 999%.
+- **Looptijd**: hele jaren (0 tot en met 999) en hele maanden (0 tot en met 11). Samen minimaal 1 maand en maximaal 999 jaar.
+
+Klopt de invoer niet, dan verschijnt er een melding bij het veld en wordt er niet gerekend.
 
 ## Wat niet wordt meegerekend
 

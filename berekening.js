@@ -22,10 +22,14 @@ export function berekenVermogen({
   startbedrag,
   maandInleg,
   jaarrentePercentage,
-  looptijdJaren,
+  looptijdMaanden,
   inlegMoment = 'eind',
   renteMethode = 'effectief',
 }) {
+  // Alleen hele maanden, zodat de rekenlus en totaal ingelegd bij elkaar passen.
+  if (!Number.isInteger(looptijdMaanden) || looptijdMaanden < 1) {
+    throw new Error(`Ongeldige looptijdMaanden: ${looptijdMaanden}`);
+  }
   if (!INLEGMOMENTEN.includes(inlegMoment)) {
     throw new Error(`Onbekend inlegMoment: ${inlegMoment}`);
   }
@@ -35,7 +39,7 @@ export function berekenVermogen({
 
   const jaarrente = jaarrentePercentage / 100;
   const rente = maandrente(jaarrente, renteMethode);
-  const maanden = looptijdJaren * 12;
+  const maanden = looptijdMaanden;
 
   // Tussendoor niet afronden.
   let saldo = startbedrag;
