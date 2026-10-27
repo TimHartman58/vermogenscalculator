@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vermogenscalculator</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Vermogenscalculator</h1>
@@ -25,7 +27,7 @@
       <span id="melding-jaarrente"></span>
     </p>
 
-    <fieldset>
+    <fieldset class="looptijd">
       <legend>Looptijd</legend>
       <p>
         <label for="looptijdJaren">Jaren</label>
@@ -40,7 +42,7 @@
       <p id="melding-looptijd"></p>
     </fieldset>
 
-    <p id="hint">Gebruik een komma voor decimalen. Bijvoorbeeld: 3,5 of 10.000.</p>
+    <p id="hint" class="uitleg">Gebruik een komma voor decimalen. Bijvoorbeeld: 3,5 of 10.000.</p>
 
     <fieldset>
       <legend>Moment van inleg</legend>
@@ -52,7 +54,7 @@
         <input type="radio" id="inleg-begin" name="inlegMoment" value="begin">
         <label for="inleg-begin">Begin van de maand</label>
       </p>
-      <p>Bij begin van de maand krijgt elke inleg een maand langer rente.</p>
+      <p class="uitleg">Bij begin van de maand krijgt elke inleg een maand langer rente.</p>
     </fieldset>
 
     <fieldset>
@@ -65,13 +67,13 @@
         <input type="radio" id="rente-nominaal" name="renteMethode" value="nominaal">
         <label for="rente-nominaal">Jaarrente/12</label>
       </p>
-      <p>Effectief geeft na een jaar precies de opgegeven jaarrente. Bij jaarrente/12 kom je door rente-op-rente iets hoger uit.</p>
+      <p class="uitleg">Effectief geeft na een jaar precies de opgegeven jaarrente. Bij jaarrente/12 kom je door rente-op-rente iets hoger uit.</p>
     </fieldset>
 
     <button type="submit">Bereken</button>
   </form>
 
-  <section aria-live="polite">
+  <section id="uitkomst" aria-live="polite">
     <h2>Uitkomst</h2>
     <p id="melding-uitkomst"></p>
     <dl>
@@ -84,7 +86,7 @@
     </dl>
   </section>
 
-  <p>Belasting (box 3), inflatie en kosten worden niet meegerekend. De uitkomst is een indicatie en geen financieel advies.</p>
+  <p class="uitleg">Belasting (box 3), inflatie en kosten worden niet meegerekend. De uitkomst is een indicatie en geen financieel advies.</p>
 
   <script type="module" src="./app.js"></script>
 </body>

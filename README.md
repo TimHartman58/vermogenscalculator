@@ -43,6 +43,18 @@ Getallen vul je in met Nederlandse notatie: een komma voor decimalen en een punt
 
 Klopt de invoer niet, dan verschijnt er een melding bij het veld en wordt er niet gerekend.
 
+## Heel grote uitkomsten
+
+Is een uitkomst groter dan € 1 biljoen (1.000.000.000.000), dan toont de pagina "meer dan € 1 biljoen". Onder € -1 biljoen staat er "minder dan € -1 biljoen". Precies € 1 biljoen wordt nog als bedrag getoond.
+
+## Kleuren aanpassen
+
+De kleuren staan bovenaan `style.css`, in het blok `:root`, als variabelen zoals `--kleur-accent: #1d4ed8;`. Pas daar de waarde aan; de rest van de pagina gebruikt die variabelen. Schrijf een kleur altijd als `#` met zes tekens.
+
+Draai daarna `node --test`. De test controleert of tekst en randen genoeg contrast hebben met hun achtergrond, volgens de toegankelijkheidsrichtlijn WCAG 2.1 (minimaal 4,5:1 voor tekst en 3:1 voor randen). Bij te weinig contrast faalt de test en zie je welk kleurpaar het is.
+
+De kleuren van het favicon (het spaarvarken in het tabblad) staan apart in `favicon.svg`.
+
 ## Wat niet wordt meegerekend
 
 - Belasting (box 3)
