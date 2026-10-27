@@ -1,0 +1,183 @@
+/* Opmaak van de vermogenscalculator. Mobile first: de regels hieronder
+   gelden voor een smal scherm; de @media-regel onderaan vult aan voor
+   bredere schermen. */
+
+/* Kleuren: pas ze hier aan, op één plek. Schrijf ze als #rrggbb, want
+   contrast.test.js leest ze uit en controleert het contrast. */
+:root {
+  --kleur-achtergrond: #ffffff;
+  --kleur-tekst: #1f2933;
+  --kleur-tekst-zacht: #52606d;
+  --kleur-rand: #7b8794;
+  --kleur-accent: #1d4ed8;
+  --kleur-accent-licht: #dbeafe;
+  --kleur-fout: #b91c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: var(--kleur-tekst);
+  background: var(--kleur-achtergrond);
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 0;
+  color: var(--kleur-accent);
+}
+
+.uitleg {
+  color: var(--kleur-tekst-zacht);
+}
+
+/* Tekstvelden: label erboven, veld over de volle breedte. */
+p > label:first-child {
+  display: block;
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  /* 16px of meer, anders zoomt iOS in bij het typen. */
+  font-size: 1rem;
+  color: var(--kleur-tekst);
+  background: var(--kleur-achtergrond);
+  border: 1px solid var(--kleur-rand);
+  border-radius: 4px;
+}
+
+input[type="radio"] {
+  accent-color: var(--kleur-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--kleur-accent);
+  outline-offset: 2px;
+}
+
+/* Meldingen: rode tekst, en een rode rand om het foute veld. */
+[id^="melding-"] {
+  display: block;
+  color: var(--kleur-fout);
+}
+
+[id^="melding-"]:empty {
+  display: none;
+}
+
+[aria-invalid="true"] {
+  border-color: var(--kleur-fout);
+  /* Maakt de rand dikker zonder dat het veld verspringt. */
+  box-shadow: 0 0 0 1px var(--kleur-fout);
+}
+
+fieldset {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--kleur-rand);
+  border-radius: 4px;
+}
+
+legend {
+  padding: 0 0.25rem;
+  font-weight: 600;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--kleur-achtergrond);
+  background: var(--kleur-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#uitkomst {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--kleur-rand);
+  border-radius: 4px;
+}
+
+/* Na het rekenen licht het uitkomstblok kort op. app.js zet de klasse. */
+@keyframes oplichten {
+  from {
+    background-color: var(--kleur-accent-licht);
+  }
+  to {
+    background-color: var(--kleur-achtergrond);
+  }
+}
+
+#uitkomst.licht-op {
+  animation: oplichten 1s ease-out;
+}
+
+/* Voor wie in het systeem minder beweging heeft ingesteld. */
+@media (prefers-reduced-motion: reduce) {
+  #uitkomst.licht-op {
+    animation: none;
+  }
+}
+
+dl {
+  margin: 0;
+}
+
+dd {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  /* Lange bedragen lopen door op een volgende regel. */
+  overflow-wrap: anywhere;
+}
+
+/* Bredere schermen. */
+@media (min-width: 40rem) {
+  body {
+    padding: 2rem;
+  }
+
+  /* Jaren en maanden naast elkaar; de melding eronder over de hele breedte. */
+  .looptijd {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+  }
+
+  #melding-looptijd {
+    grid-column: 1 / -1;
+  }
+
+  button {
+    width: auto;
+  }
+
+  /* Naam links, bedrag rechts. */
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem;
+    align-items: baseline;
+  }
+
+  dd {
+    text-align: right;
+  }
+}

@@ -3,7 +3,7 @@
 
 import { berekenVermogen } from './berekening.js';
 import { controleerInvoer, controleerUitkomst } from './controle.js';
-import { formatteerEuro } from './opmaak.js';
+import { formatteerUitkomst } from './opmaak.js';
 
 // In de volgorde van het formulier, zodat de focus naar het eerste foute veld gaat.
 const TEKSTVELDEN = ['startbedrag', 'maandInleg', 'jaarrente', 'looptijdJaren', 'looptijdMaanden'];
@@ -11,6 +11,7 @@ const UITKOMSTEN = ['eindbedrag', 'totaalIngelegd', 'totaleRente'];
 
 const formulier = document.getElementById('formulier');
 const velden = formulier.elements;
+const uitkomstBlok = document.getElementById('uitkomst');
 
 function zetMelding(sleutel, tekst) {
   document.getElementById(`melding-${sleutel}`).textContent = tekst;
@@ -29,6 +30,15 @@ function wisUitkomst() {
     document.getElementById(id).textContent = '';
   }
   zetMelding('uitkomst', '');
+}
+
+// Een animatie speelt maar één keer per klasse. Door de klasse weg te halen,
+// de browser de pagina opnieuw te laten opmeten (offsetWidth) en de klasse
+// terug te zetten, start hij bij elke berekening opnieuw.
+function lichtUitkomstOp() {
+  uitkomstBlok.classList.remove('licht-op');
+  void uitkomstBlok.offsetWidth;
+  uitkomstBlok.classList.add('licht-op');
 }
 
 function toonMeldingen(meldingen) {
@@ -71,8 +81,9 @@ formulier.addEventListener('submit', (event) => {
   }
 
   for (const id of UITKOMSTEN) {
-    document.getElementById(id).textContent = formatteerEuro(uitkomst[id]);
+    document.getElementById(id).textContent = formatteerUitkomst(uitkomst[id]);
   }
+  lichtUitkomstOp();
 });
 
 // Een oude uitkomst mag niet blijven staan bij nieuwe invoer.

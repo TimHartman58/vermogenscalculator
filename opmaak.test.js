@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatteerEuro, leesGetal } from './opmaak.js';
+import { formatteerEuro, formatteerUitkomst, leesGetal } from './opmaak.js';
 
 //   is de harde spatie tussen € en het bedrag.
 const bedragen = [
@@ -12,6 +12,24 @@ const bedragen = [
 for (const { getal, verwacht } of bedragen) {
   test(`formatteerEuro(${getal}) geeft ${verwacht}`, () => {
     assert.equal(formatteerEuro(getal), verwacht);
+  });
+}
+
+// Boven € 1 biljoen (10^12) een tekst in plaats van het bedrag.
+//   is de harde spatie tussen € en het bedrag.
+const uitkomsten = [
+  { getal: 999_999_999_999.99, verwacht: '€ 999.999.999.999,99' },
+  { getal: 1_000_000_000_000, verwacht: '€ 1.000.000.000.000,00' },
+  { getal: 1_000_000_000_000.01, verwacht: 'meer dan € 1 biljoen' },
+  { getal: 5e15, verwacht: 'meer dan € 1 biljoen' },
+  { getal: 0, verwacht: '€ 0,00' },
+  { getal: -1_000_000_000_000, verwacht: '€ -1.000.000.000.000,00' },
+  { getal: -1_000_000_000_000.01, verwacht: 'minder dan € -1 biljoen' },
+];
+
+for (const { getal, verwacht } of uitkomsten) {
+  test(`formatteerUitkomst(${getal}) geeft ${verwacht}`, () => {
+    assert.equal(formatteerUitkomst(getal), verwacht);
   });
 }
 
